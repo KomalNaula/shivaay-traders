@@ -1,0 +1,285 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  padding: 20px;
+  color: #fff;
+}
+
+/* ✅ Background image only for Home page */
+body.home-page {
+  background: url('images/background3.gif') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* ✅ Overlay for Home page */
+body.home-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 34, 61, 0.6);
+  z-index: -1;
+}
+
+/* ✅ Interactive background for other pages */
+body:not(.home-page) {
+  background: linear-gradient(135deg, #f4f7fa, #dfe6f0);
+  background-size: 400% 400%;
+  animation: backgroundShift 15s ease infinite;
+  color: #222;
+}
+
+@keyframes backgroundShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ✅ Wrapper for consistent layout */
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+/* ✅ Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 15px 25px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.logo {
+  height: 50px;
+  max-width: 100%;
+}
+.nav-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.navbar a:hover,
+.navbar a.active {
+  background-color: #ff6a00;
+}
+
+/* ✅ Hero Section */
+.hero {
+  text-align: center;
+  padding: 100px 20px 60px;
+}
+.hero h1 {
+  font-size: clamp(1.5rem, 5vw, 3rem); /* ✅ Responsive title */
+  margin-bottom: 20px;
+}
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 25px;
+}
+.btn {
+  background-color: #ff6a00;
+  color: white;
+  padding: 12px 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn:hover {
+  background-color: #e55c00;
+}
+
+/* ✅ Flip Cards */
+.services-flip {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.services-flip h2 {
+  color: white;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+.flip-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.flip-card {
+  width: 220px;
+  height: 280px;
+  perspective: 1000px;
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.flip-front img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+.flip-front h3 {
+  font-size: 1.1rem;
+}
+.flip-back {
+  transform: rotateY(180deg);
+  text-align: center;
+}
+.flip-back p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* ✅ Responsive Video Wrapper */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  margin: 2rem 0;
+}
+.video-wrapper video,
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+}
+
+/* ✅ Map Section */
+.map-section {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.map-section h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.map-responsive iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+  border-radius: 10px;
+}
+
+/* ✅ WhatsApp Chat */
+.whatsapp-chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+.whatsapp-chat img {
+  height: 50px;
+  width: 50px;
+}
+
+/* ✅ Scrolling Banner */
+.scrolling-banner {
+  background-color: #ff6a00;
+  overflow: hidden;
+  padding: 10px 0;
+  color: white;
+  font-weight: bold;
+}
+.scrolling-text {
+  white-space: nowrap;
+  animation: scroll 15s linear infinite;
+}
+@keyframes scroll {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+/* ✅ Footer */
+footer {
+  background-color: #0a223d;
+  text-align: center;
+  padding: 15px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* ✅ Responsive Tweaks */
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  body { padding: 15px; }
+  .content-wrapper { padding: 0 15px; }
+  .navbar a { font-size: 0.95rem; padding: 8px 10px; }
+  .hero h1 { font-size: clamp(1.4rem, 6vw, 2.4rem); }
+  .hero p { font-size: 1rem; }
+  .btn { font-size: 0.95rem; padding: 10px 25px; }
+  .flip-card-container { flex-direction: column; align-items: center; }
+  .map-section iframe { height: 300px; }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  body { padding: 10px; }
+  .content-wrapper { padding: 0 10px; }
+  .navbar a { font-size: 0.9rem; display: block; text-align: center; }
+  .hero h1 { font-size: clamp(1.2rem, 7vw, 2rem); }
+  .hero p { font-size: 0.95rem; }
+  .btn { font-size: 0.9rem; padding: 10px 20px; }
+  .map-section iframe { height: 250px; }
+  .nav-links { flex-direction: column; align-items: flex-start; }
+  .navbar { flex-direction: column; align-items: flex-start; }
+}
+
+@media (min-width: 1200px) {
+  html { font-size: 17px; }
+  .hero h1 { font-size: 3rem; }
+  .hero p { font-size: 1.3rem; }
+}
